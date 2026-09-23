@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025.10.15 砍掉自由旋转 | 毛春雨 开发日志</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f7f7f7;
+  --text: #111111;
+  --muted: #777777;
+  --border: #111111;
+  --border-soft: #e5e5e5;
+  --container: 1360px;
+  --gutter: 3rem;
+  --reading: 1080px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--text); }
+a:hover { opacity: 0.6; }
+
+/* 顶部栏 */
+.topbar {
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 0;
+}
+.topbar-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+}
+.topbar .back { color: var(--muted); border-bottom: none; }
+.topbar .back:hover { color: var(--text); opacity: 1; }
+.topbar .label { color: var(--muted); letter-spacing: 0.12em; font-size: 0.78rem; }
+
+/* 文章容器 */
+.article-wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 5rem var(--gutter) 6rem;
+}
+.article {
+  max-width: var(--reading);
+  margin: 0 auto;
+}
+.article .date {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+.article h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+.article p {
+  color: #333;
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+}
+.article h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2.8rem 0 1rem;
+}
+.article ul {
+  margin: 0 0 1.3rem 1.4rem;
+  color: #333;
+}
+.article li { margin-bottom: 0.5rem; font-size: 1rem; }
+.article code {
+  background: var(--bg-soft);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.92rem;
+}
+
+/* 标签行 */
+.tag-row {
+  margin-top: 3.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag-row span {
+  border: 1px solid var(--border-soft);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* 底部导航 */
+.nav-bottom {
+  margin-top: 3rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.nav-bottom a { color: var(--text); }
+
+/* 中屏 */
+@media (max-width: 1100px) {
+  :root { --gutter: 2rem; }
+  .article { max-width: 100%; }
+  .article h1 { font-size: 1.9rem; }
+  .article-wrap { padding: 4rem var(--gutter) 5rem; }
+}
+
+/* 移动端 */
+@media (max-width: 720px) {
+  :root { --gutter: 1.2rem; }
+  body { font-size: 15px; }
+  .topbar-inner { padding: 0 var(--gutter); }
+  .article-wrap { padding: 3rem var(--gutter) 4rem; }
+  .article h1 { font-size: 1.6rem; margin-bottom: 2rem; }
+  .article p { font-size: 0.95rem; }
+  .article h2 { font-size: 1.05rem; margin: 2rem 0 0.7rem; }
+  .article li { font-size: 0.95rem; }
+  .nav-bottom { flex-direction: column; gap: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="back" href="../index.html">← 返回作品集</a>
+    <span class="label">DEV LOG</span>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <article class="article">
+    <p class="date">2025.10.15</p>
+    <h1>砍掉自由旋转，改为固定 90° 档位，美术量降到可控范围</h1>
+
+    <p>
+      今天做了一个重要的取舍：原本想让窗外建筑可以自由旋转，像纪念碑谷那样连续转动。
+      灰盒阶段跑了两天，发现两个问题。
+    </p>
+
+    <h2>问题一：2D 分层做不了实时遮挡</h2>
+    <p>
+      自由旋转时，建筑的每个面都会轮流出现在前面。用 2D 图层伪 3D，
+      只能手动切换图层顺序，旋转角度一多，组合爆炸，根本画不完。
+    </p>
+
+    <h2>问题二：美术量翻三倍</h2>
+    <p>
+      每旋转 15° 就要画一套关键帧，360° 是 24 张。多轴组合更夸张。
+      以我一个人的产能，四个月绝对做不完。
+    </p>
+
+    <h2>决定：固定 90° 档位</h2>
+    <ul>
+      <li>建筑只能旋转 0° / 90° / 180° / 270° 四个角度</li>
+      <li>每次旋转直接切换预画好的图层组，不做连续动画</li>
+      <li>视觉错位的"神奇感"靠构图设计，不靠旋转自由度</li>
+      <li>美术量从 24 套降到 4 套，程序也简化成状态切换</li>
+    </ul>
+
+    <p>
+      这个决定牺牲了纪念碑谷式的"连续旋转惊艳感"，但换来了四个月完成的可行性。
+      第一款游戏，能做完比什么都重要。
+    </p>
+
+    <div class="tag-row">
+      <span>砍功能</span>
+      <span>技术方案</span>
+      <span>美术量</span>
+    </div>
+
+    <div class="nav-bottom">
+      <a href="2025-10-08.html">← 上一篇</a>
+      <a href="2025-09-28.html">下一篇 →</a>
+    </div>
+  </article>
+</div>
+
+</body>
+</html>

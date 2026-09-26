@@ -11,7 +11,6 @@
 <!-- 首页 -->
 <section class="landing">
   <div class="landing-grid">
-
     <a class="cell cell--title" href="#hero">
       <div class="cell-inner">
         <p class="cell-tag">PORTFOLIO 2025</p>
@@ -19,7 +18,6 @@
         <p class="cell-sub">游戏策划 · 系统 / 关卡 / 叙事</p>
       </div>
     </a>
-
     <a class="cell cell--project" href="#project">
       <div class="cell-inner">
         <span class="cell-index">01</span>
@@ -28,7 +26,6 @@
       </div>
       <div class="cell-line"></div>
     </a>
-
     <a class="cell cell--analysis" href="#analysis">
       <div class="cell-inner">
         <span class="cell-index">02</span>
@@ -37,7 +34,6 @@
       </div>
       <div class="cell-line"></div>
     </a>
-
     <a class="cell cell--other" href="#other">
       <div class="cell-inner">
         <span class="cell-index">03</span>
@@ -46,7 +42,6 @@
       </div>
       <div class="cell-line"></div>
     </a>
-
     <a class="cell cell--about" href="#about">
       <div class="cell-inner">
         <span class="cell-index">04</span>
@@ -55,11 +50,9 @@
       </div>
       <div class="cell-line"></div>
     </a>
-
     <div class="cell cell--empty cell--empty-1"></div>
     <div class="cell cell--empty cell--empty-2"></div>
   </div>
-
   <div class="landing-corner landing-corner--tl"></div>
   <div class="landing-corner landing-corner--tr"></div>
   <div class="landing-corner landing-corner--bl"></div>
@@ -83,12 +76,10 @@
 <!-- 核心项目 -->
 <section id="project" class="section">
   <h2>核心项目</h2>
-  <p class="section-desc">独立开发中的 2D 点击解谜剧情向游戏《埃拉拉》（暂定名），我负责策划、关卡、叙事与程序。</p>
+  <p class="section-desc">独立开发中的 2D 点击解谜剧情向游戏《书里窗外》（暂定名），我负责策划、关卡、叙事与程序。</p>
 
-  <!-- ========== 1. 项目总览 ========== -->
   <div class="subsection">
     <div class="subsection-title">项目总览</div>
-
     <article class="card project-card">
       <div class="project-visual">
         <img src="images/cover.jpg" alt="游戏主视觉图">
@@ -96,17 +87,12 @@
       <div class="card-body">
         <h3>《书里窗外》（暂定名）</h3>
         <p class="meta">2D 点击解谜剧情向 · Godot 4 · 独立开发</p>
-
         <p>玩家在书页中操作道具，窗外现实随之改变。核心玩法是利用视觉错位，把逻辑上不相连的平面在特定视角下连接起来，让角色通过。</p>
-
         <p>埃拉拉是一个遭遇龙卷风的 12 岁农场女孩。在生命的最后关头，她幻想自己进入奇幻仙境。玩家以"兔子"身份，通过书页与她交流、帮她解谜。</p>
-
         <p><strong>我的职责：</strong>策划、关卡设计、叙事架构、系统设计、程序实现。</p>
-
         <ul class="tags">
           <li>系统策划</li><li>关卡策划</li><li>文案策划</li><li>Godot 4</li><li>独立开发</li>
         </ul>
-
         <div class="links">
           <a href="你的itch.io链接" target="_blank">itch.io 试玩</a>
           <a href="你的Steam链接" target="_blank">Steam 页面</a>
@@ -115,11 +101,9 @@
     </article>
   </div>
 
-  <!-- ========== 2. 设计思路 ========== -->
   <div class="subsection">
     <div class="subsection-title">设计思路</div>
     <p class="subsection-desc">叙事结构、核心玩法循环、三场景状态机。</p>
-
     <div class="design-grid">
       <div class="design-item">
         <div class="design-visual">
@@ -130,7 +114,6 @@
           <p>翻页 = 她写下一段故事；解谜 = 帮她写完这段。叙事与玩法彻底融合。</p>
         </div>
       </div>
-
       <div class="design-item">
         <div class="design-visual">
           <img src="images/core-loop.jpg" alt="核心玩法循环图">
@@ -140,7 +123,6 @@
           <p>观察窗外 → 进入书中操作 → 变量改变 → 窗外响应 → 解谜推进。</p>
         </div>
       </div>
-
       <div class="design-item">
         <div class="design-visual">
           <img src="images/state-machine.jpg" alt="三场景状态机图">
@@ -153,11 +135,9 @@
     </div>
   </div>
 
-  <!-- ========== 3. 角色设计 ========== -->
   <div class="subsection">
     <div class="subsection-title">角色设计</div>
     <p class="subsection-desc">埃拉拉的角色设定与三视图。</p>
-
     <div class="design-grid">
       <div class="design-item">
         <div class="design-visual">
@@ -168,51 +148,46 @@
           <p>12岁农场女孩。勇敢、好奇、喜欢兔子。</p>
         </div>
       </div>
-  </div>
-
-  <!-- ========== 4. 游戏系统 ========== -->
-<div class="subsection">
-  <div class="subsection-title">游戏系统</div>
-  <p class="subsection-desc">书页操作 → 窗外反馈。以下是实际运行录屏。</p>
-
-  <div class="design-grid">
-    <div class="design-item">
-      <div class="design-visual">
-        <img src="images/gif-drag.gif" alt="书页拖拽演示">
-      </div>
-      <div class="design-info">
-        <h4>书页拖拽 → 窗外响应</h4>
-        <p>玩家拖动书页元素，窗外场景实时变化。</p>
-      </div>
-    </div>
-
-    <div class="design-item">
-      <div class="design-visual">
-        <img src="images/gif-combine.gif" alt="元素组合演示">
-      </div>
-      <div class="design-info">
-        <h4>元素组合 → 平台连接</h4>
-        <p>两个条件同时满足，窗外断裂平台连接。</p>
-      </div>
-    </div>
-
-    <div class="design-item">
-      <div class="design-visual">
-        <img src="images/gif-night.gif" alt="昼夜切换演示">
-      </div>
-      <div class="design-info">
-        <h4>昼夜切换 → 图层变化</h4>
-        <p>书页中切换昼夜，窗外场景切换图层。</p>
-      </div>
     </div>
   </div>
-</div>
 
-  <!-- ========== 5. UI 与画面 ========== -->
+  <div class="subsection">
+    <div class="subsection-title">游戏系统</div>
+    <p class="subsection-desc">书页操作 → 窗外反馈。以下是实际运行录屏。</p>
+    <div class="design-grid">
+      <div class="design-item">
+        <div class="design-visual">
+          <img src="images/gif-drag.gif" alt="书页拖拽演示">
+        </div>
+        <div class="design-info">
+          <h4>书页拖拽 → 窗外响应</h4>
+          <p>玩家拖动书页元素，窗外场景实时变化。</p>
+        </div>
+      </div>
+      <div class="design-item">
+        <div class="design-visual">
+          <img src="images/gif-combine.gif" alt="元素组合演示">
+        </div>
+        <div class="design-info">
+          <h4>元素组合 → 平台连接</h4>
+          <p>两个条件同时满足，窗外断裂平台连接。</p>
+        </div>
+      </div>
+      <div class="design-item">
+        <div class="design-visual">
+          <img src="images/gif-night.gif" alt="昼夜切换演示">
+        </div>
+        <div class="design-info">
+          <h4>昼夜切换 → 图层变化</h4>
+          <p>书页中切换昼夜，窗外场景切换图层。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="subsection">
     <div class="subsection-title">UI 与画面</div>
     <p class="subsection-desc">三个场景的实际游戏截图。</p>
-
     <div class="design-grid">
       <div class="design-item">
         <div class="design-visual">
@@ -223,7 +198,6 @@
           <p>过渡场景，点击书或窗户进入对应画面。</p>
         </div>
       </div>
-
       <div class="design-item">
         <div class="design-visual">
           <img src="images/screenshot-book.jpg" alt="看书场景截图">
@@ -233,7 +207,6 @@
           <p>玩家在此操作书页元素，改变窗外世界。</p>
         </div>
       </div>
-
       <div class="design-item">
         <div class="design-visual">
           <img src="images/screenshot-window.jpg" alt="窗外场景截图">
@@ -246,11 +219,9 @@
     </div>
   </div>
 
-  <!-- ========== 6. 演示视频 ========== -->
   <div class="subsection">
     <div class="subsection-title">演示视频</div>
     <p class="subsection-desc">30 秒核心玩法演示。</p>
-
     <article class="card">
       <div class="card-body">
         <h3>核心玩法演示</h3>
@@ -262,7 +233,6 @@
     </article>
   </div>
 
-  <!-- ========== 7. 开发日志 ========== -->
   <div class="subsection">
     <div class="subsection-title">开发日志</div>
     <p class="subsection-desc">从 0 到 1 记录决策、踩坑、迭代、砍功能。最早期的三篇日志发布在CSDN上，往后的日志均为本站直接编写。</p>
@@ -277,17 +247,17 @@
         <span class="devlog-title">Godot 4 三场景切换跑通，点击书 / 窗可切换，核心交互验证</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/163253300?spm=1001.2014.3001.5502">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/163253300">
         <span class="devlog-date">2026.07.28</span>
         <span class="devlog-title">游戏类型调整——从二维剧情向微解谜转为点击类解谜游戏</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/154711558?spm=1001.2014.3001.5502">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/154711558">
         <span class="devlog-date">2025.11.12</span>
         <span class="devlog-title">（旧版）开发阶段性总结1——开发顺序和美术绘制问题</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/153501915?spm=1001.2014.3001.5502">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/153501915">
         <span class="devlog-date">2025.10.18</span>
         <span class="devlog-title">（旧版）第一个主要关卡构思——剧情和地图</span>
         <span class="devlog-arrow">→</span>
@@ -301,9 +271,12 @@
   <h2>实习项目</h2>
   <p class="section-desc">AI 开发实习期间，独立交付并上线了一个完整的企业员工管理系统。重点展示需求拆解、系统设计与落地能力。</p>
 
-  <article class="card project-card">
-    <div class="project-visual">
-      <img src="images/intern-system.jpg" alt="企业员工管理系统截图">
+  <article class="card intern-card">
+    <div class="intern-gallery">
+      <img src="images/企业员工管理系统截图.png" alt="员工管理界面">
+      <img src="images/intern-2.png" alt="考勤与请假界面">
+      <img src="images/intern-3.png" alt="薪资与看板界面">
+      <img src="images/intern-4.png" alt="数据看板界面">
     </div>
     <div class="card-body">
       <h3>企业员工管理系统</h3>
@@ -313,9 +286,6 @@
       <ul class="tags">
         <li>需求拆解</li><li>系统设计</li><li>数据建模</li><li>部署上线</li>
       </ul>
-      <div class="links">
-        <a href="你的系统截图链接" target="_blank">查看截图</a>
-      </div>
     </div>
   </article>
 </section>
@@ -364,14 +334,15 @@
 <section id="other" class="section">
   <h2>其他创作</h2>
   <p class="section-desc">叙事节奏、视觉表达与跨媒介尝试。投文案策划可重点看手书与微电影，投关卡策划可看 3D 建模。</p>
+
   <div class="grid">
     <article class="card">
       <div class="card-body">
         <h3>同人手书动画</h3>
         <p>分镜、动画节奏、叙事表达。展示对情绪曲线和视觉叙事的理解。</p>
         <div class="links">
-          <a href="https://www.bilibili.com/video/BV1rpRCBZEAe/?spm_id_from=333.1387.upload.video_card.click&vd_source=d65b849b5e9a57751066e019ce61a330" target="_blank">B站观看</a>
-         <a href="https://www.douyin.com/user/self?from_tab_name=main&modal_id=7636347250213746856&showTab=post" target="_blank">抖音观看</a>
+          <a href="https://www.bilibili.com/video/BV1rpRCBZEAe/" target="_blank">B站观看</a>
+          <a href="https://www.douyin.com/user/self" target="_blank">抖音观看</a>
         </div>
       </div>
     </article>
@@ -380,24 +351,27 @@
         <h3>同人剪辑</h3>
         <p>节奏剪辑、情绪铺垫、音画配合。注明同人创作，非商用。</p>
         <div class="links">
-          <a href="https://www.bilibili.com/video/BV1PDQ9YFEPP/?spm_id_from=333.1387.upload.video_card.click&vd_source=d65b849b5e9a57751066e019ce61a330" target="_blank">观看</a>
+          <a href="https://www.bilibili.com/video/BV1PDQ9YFEPP/" target="_blank">观看</a>
         </div>
       </div>
     </article>
-    <article class="card">
-  
-  <div class="card-body">
-    <h3>3DSMax 中式庭院建模</h3>
-    <p class="meta">小组合作 · 负责院子区域建模与动画</p>
-    <p>负责石板路、外墙、拱门、池塘、荷花、树木等部件建模与材质制作，并承担水面波动、树叶摆动等动画。</p>
-    <div class="links">
+  </div>
+
+  <!-- 建模：横向多图布局 -->
+  <article class="card intern-card" style="margin-top:1.8rem;">
+    <div class="intern-gallery">
       <img src="images/成品建模截图.jpg" alt="中式庭院成品截图">
-      <a href="images/庭院截图.jpg" target="_blank">我负责的部分</a>
-      <a href="images/展示视频.mp4" target="_blank">动画展示</a>
+      <img src="images/庭院截图.jpg" alt="我负责的院子区域">
     </div>
-  </div>
-</article>
-  </div>
+    <div class="card-body">
+      <h3>3DSMax 中式庭院建模</h3>
+      <p class="meta">小组合作 · 负责院子区域建模与动画</p>
+      <p>负责石板路、外墙、拱门、池塘、荷花、树木等部件建模与材质制作，并承担水面波动、树叶摆动等动画。左图为小组拼合后的成品，右图为我负责的院子区域。</p>
+      <ul class="tags">
+        <li>3dsMax</li><li>多边形建模</li><li>材质贴图</li><li>场景动画</li>
+      </ul>
+    </div>
+  </article>
 </section>
 
 <!-- 关于我 -->
@@ -416,13 +390,22 @@
   <p>联系方式</p>
   <p>
     <a href="mailto:2586804868@qq.com">邮箱</a> ·
-    <a href="https://blog.csdn.net/mohxitx?spm=1000.2115.3001.5343" target="_blank">CSDN</a> ·
-    <a href="https://space.bilibili.com/425326771/upload/video" target="_blank">B站</a> ·
+    <a href="https://blog.csdn.net/mohxitx" target="_blank">CSDN</a> ·
+    <a href="https://space.bilibili.com/425326771" target="_blank">B站</a> ·
     <a href="https://www.zhihu.com/people/cheng-feng-18-88" target="_blank">知乎</a>
   </p>
   <p style="margin-top:1rem; font-size:0.8rem;">© 2026 毛春雨 · 游戏策划作品集</p>
-  <p style="margin-top:0.8rem; font-size:0.75rem; color:#999;">本作品集持续更新中 · 最后更新：2026.09.24</p>
+  <p style="margin-top:0.8rem; font-size:0.75rem; color:#999;">本作品集持续更新中 · 最后更新：2026.09.25</p>
 </footer>
+
+<!-- 图片灯箱 -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="关闭">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="上一张">‹</button>
+  <img src="" alt="" class="lightbox-img">
+  <button class="lightbox-nav lightbox-next" aria-label="下一张">›</button>
+  <div class="lightbox-counter"></div>
+</div>
 
 <script src="script.js"></script>
 </body>

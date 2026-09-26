@@ -47,3 +47,86 @@ if (landing && corners.length) {
     });
   });
 }
+
+// ============ 图片灯箱（支持同组切换） ============
+(function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const prevBtn = lightbox.querySelector('.lightbox-prev');
+  const nextBtn = lightbox.querySelector('.lightbox-next');
+  const counter = lightbox.querySelector('.lightbox-counter');
+
+  let group = [];
+  let index = 0;
+
+  const render = () => {
+    if (!group.length) return;
+    const img = group[index];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    if (counter) counter.textContent = (index + 1) + ' / ' + group.length;
+    lightbox.classList.toggle('has-multi', group.length > 1);
+  };
+
+  const open = (img) => {
+    const gallery = img.closest('.intern-gallery');
+    if (gallery) {
+      group = Array.from(gallery.querySelectorAll('img'));
+    } else {
+      group = [img];
+    }
+    index = group.indexOf(img);
+    if (index < 0) index = 0;
+    render();
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    lightbox.classList.remove('active', 'has-multi');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => { lightboxImg.src = ''; }, 260);
+  };
+
+  const prev = () => {
+    if (group.length < 2) return;
+    index = (index - 1 + group.length) % group.length;
+    render();
+  };
+
+  const next = () => {
+    if (group.length < 2) return;
+    index = (index + 1) % group.length;
+    render();
+  };
+
+  document.querySelectorAll('.card img, .project-visual img, .design-visual img, .intern-gallery img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      open(img);
+    });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      close();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+})();

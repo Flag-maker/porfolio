@@ -578,6 +578,176 @@ td code {
 
 .footer a:hover { color: var(--red); }
 
+/* ============ 多图卡片（实习 / 建模） ============ */
+.intern-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+}
+
+.intern-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 14px;
+  background: #f7f7f7;
+  border-right: 3px solid var(--black);
+  overflow: hidden;
+  align-content: center;
+}
+
+.intern-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  border: 3px solid var(--black);
+  box-shadow: 5px 5px 0 var(--black);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.intern-gallery img:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--black);
+}
+
+.intern-gallery:has(img:only-child) {
+  grid-template-columns: 1fr;
+}
+
+/* ============ 图片灯箱 ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.92);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 3px var(--black);
+  animation: lightboxIn 0.3s ease;
+  cursor: default;
+}
+
+@keyframes lightboxIn {
+  from { transform: scale(0.88); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  color: var(--white);
+  border: 3px solid var(--white);
+  font-size: 1.6rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skew(-8deg);
+  box-shadow: 4px 4px 0 var(--black);
+  line-height: 1;
+  padding: 0;
+  transition: all 0.15s;
+}
+
+.lightbox-close:hover {
+  background: var(--white);
+  color: var(--red);
+  transform: skew(-8deg) scale(1.08);
+  box-shadow: 4px 4px 0 var(--red);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) skew(-8deg);
+  width: 52px;
+  height: 52px;
+  background: var(--white);
+  color: var(--black);
+  border: 3px solid var(--black);
+  font-size: 1.8rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 0 var(--red);
+  line-height: 1;
+  padding: 0;
+  transition: all 0.15s;
+  z-index: 2;
+}
+
+.lightbox.has-multi .lightbox-nav {
+  display: flex;
+}
+
+.lightbox-nav:hover {
+  background: var(--red);
+  color: var(--white);
+  transform: translateY(-50%) skew(-8deg) scale(1.08);
+  box-shadow: 5px 5px 0 var(--black);
+}
+
+.lightbox-prev { left: 2.5rem; }
+.lightbox-next { right: 2.5rem; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%) skew(-8deg);
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  background: var(--black);
+  border: 2px solid var(--white);
+  padding: 0.35rem 1rem;
+  display: none;
+}
+
+.lightbox.has-multi .lightbox-counter {
+  display: block;
+}
+
+.lightbox.has-multi .lightbox-counter {
+  display: block;
+}
+
+/* 卡片图片放大光标 */
+.card img,
+.project-visual img,
+.design-visual img,
+.intern-gallery img {
+  cursor: zoom-in;
+}
+
 /* ============ 移动端 ============ */
 @media (max-width: 720px) {
   .landing { padding: 1rem; }
@@ -619,4 +789,35 @@ td code {
 
   .design-visual { min-height: 180px; }
   .design-visual img { min-height: 180px; }
-}
+
+  .intern-card {
+    grid-template-columns: 1fr;
+  }
+  .intern-gallery {
+    border-right: none;
+    border-bottom: 3px solid var(--black);
+    gap: 10px;
+    padding: 10px;
+  }
+  .intern-gallery img {
+    min-height: 140px;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+
+  .lightbox { padding: 1rem; }
+  .lightbox-close { top: 0.8rem; right: 0.8rem; width: 40px; height: 40px; font-size: 1.3rem; }
+  .lightbox-img { box-shadow: 0 0 0 2px var(--black); }
+
+  .lightbox-nav {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+    box-shadow: 3px 3px 0 var(--red);
+  }
+  .lightbox-prev { left: 0.4rem; }
+  .lightbox-next { right: 0.4rem; }
+  .lightbox-counter {
+    bottom: 0.6rem;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+  }

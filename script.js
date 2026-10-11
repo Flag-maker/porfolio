@@ -130,3 +130,48 @@ if (landing && corners.length) {
     if (e.key === 'ArrowRight') next();
   });
 })();
+
+// ============ 回到顶部 ============
+(function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  const toggleVisible = () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', toggleVisible, { passive: true });
+  toggleVisible();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ============ 滚动位置恢复 ============
+(function initScrollRestore() {
+  const KEY = 'portfolio-scroll-y';
+
+  // 离开页面前保存当前位置
+  window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem(KEY, window.scrollY);
+  });
+
+  // 返回页面时恢复
+  window.addEventListener('load', () => {
+    const saved = sessionStorage.getItem(KEY);
+    if (saved !== null) {
+      const y = parseInt(saved, 10);
+      if (!isNaN(y) && y > 0) {
+        // 等页面渲染完成再滚
+        requestAnimationFrame(() => {
+          window.scrollTo(0, y);
+        });
+      }
+    }
+  });
+})();

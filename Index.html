@@ -11,13 +11,16 @@
 <!-- 首页 -->
 <section class="landing">
   <div class="landing-grid">
-    <a class="cell cell--title" href="#hero">
+
+    <a class="cell cell--title" href="#about">
       <div class="cell-inner">
-        <p class="cell-tag">PORTFOLIO 2025</p>
+        <p class="cell-tag">PORTFOLIO 2026</p>
         <h1 class="cell-title">作品集展示</h1>
         <p class="cell-sub">游戏策划 · 系统 / 关卡 / 叙事</p>
+        <p class="cell-about-line">独立开发者 · 关于我</p>
       </div>
     </a>
+
     <a class="cell cell--project" href="#project">
       <div class="cell-inner">
         <span class="cell-index">01</span>
@@ -26,33 +29,36 @@
       </div>
       <div class="cell-line"></div>
     </a>
-    <a class="cell cell--analysis" href="#analysis">
+
+    <a class="cell cell--intern" href="#intern">
       <div class="cell-inner">
         <span class="cell-index">02</span>
+        <h2 class="cell-name">实习项目</h2>
+        <p class="cell-desc">企业管理系统 · 已上线</p>
+      </div>
+      <div class="cell-line"></div>
+    </a>
+
+    <a class="cell cell--analysis" href="#analysis">
+      <div class="cell-inner">
+        <span class="cell-index">03</span>
         <h2 class="cell-name">游戏拆解</h2>
         <p class="cell-desc">锈湖 / Gorogoa / 第五人格</p>
       </div>
       <div class="cell-line"></div>
     </a>
+
     <a class="cell cell--other" href="#other">
       <div class="cell-inner">
-        <span class="cell-index">03</span>
+        <span class="cell-index">04</span>
         <h2 class="cell-name">其他创作</h2>
         <p class="cell-desc">手书 / 剪辑 / 建模</p>
       </div>
       <div class="cell-line"></div>
     </a>
-    <a class="cell cell--about" href="#about">
-      <div class="cell-inner">
-        <span class="cell-index">04</span>
-        <h2 class="cell-name">关于我</h2>
-        <p class="cell-desc">独立开发者 · 求职中</p>
-      </div>
-      <div class="cell-line"></div>
-    </a>
-    <div class="cell cell--empty cell--empty-1"></div>
-    <div class="cell cell--empty cell--empty-2"></div>
+
   </div>
+
   <div class="landing-corner landing-corner--tl"></div>
   <div class="landing-corner landing-corner--tr"></div>
   <div class="landing-corner landing-corner--bl"></div>
@@ -94,8 +100,8 @@
           <li>系统策划</li><li>关卡策划</li><li>文案策划</li><li>Godot 4</li><li>独立开发</li>
         </ul>
         <div class="links">
-          <a href="你的itch.io链接" target="_blank">itch.io 试玩</a>
-          <a href="你的Steam链接" target="_blank">Steam 页面</a>
+          <span class="link-pending">预计十一月份在ITCH.IO上线</span>
+          <span class="link-pending">预计十一月份上架steam商店页面</span>
         </div>
       </div>
     </article>
@@ -237,27 +243,22 @@
     <div class="subsection-title">开发日志</div>
     <p class="subsection-desc">从 0 到 1 记录决策、踩坑、迭代、砍功能。最早期的三篇日志发布在CSDN上，往后的日志均为本站直接编写。</p>
     <div class="devlog-list">
-      <a class="devlog-item" href="devlog/2025-09-24.html">
-        <span class="devlog-date">2025.09.24</span>
-        <span class="devlog-title">作品集部署上线，重构核心项目结构，突出实际产出</span>
-        <span class="devlog-arrow">→</span>
-      </a>
       <a class="devlog-item" href="开发日志/Day1.html">
         <span class="devlog-date">2026.09.26</span>
         <span class="devlog-title">三场景切换跑通，点击书 / 窗可切换，核心交互验证</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/163253300">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/163253300" target="_blank">
         <span class="devlog-date">2026.07.28</span>
         <span class="devlog-title">游戏类型调整——从二维剧情向微解谜转为点击类解谜游戏</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/154711558">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/154711558" target="_blank">
         <span class="devlog-date">2025.11.12</span>
         <span class="devlog-title">（旧版）开发阶段性总结1——开发顺序和美术绘制问题</span>
         <span class="devlog-arrow">→</span>
       </a>
-      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/153501915">
+      <a class="devlog-item" href="https://blog.csdn.net/mohxitx/article/details/153501915" target="_blank">
         <span class="devlog-date">2025.10.18</span>
         <span class="devlog-title">（旧版）第一个主要关卡构思——剧情和地图</span>
         <span class="devlog-arrow">→</span>
@@ -274,9 +275,6 @@
   <article class="card intern-card">
     <div class="intern-gallery">
       <img src="images/企业员工管理系统截图.png" alt="员工管理界面">
-      <img src="images/intern-2.png" alt="考勤与请假界面">
-      <img src="images/intern-3.png" alt="薪资与看板界面">
-      <img src="images/intern-4.png" alt="数据看板界面">
     </div>
     <div class="card-body">
       <h3>企业员工管理系统</h3>
@@ -297,6 +295,26 @@
   <div class="grid">
     <article class="card">
       <div class="card-body">
+        <h3>Gorogoa：游戏拆解</h3>
+        <p class="meta">系统 / 关卡方向 · 撰写中 · 预计 10 月初完成</p>
+        <p>横向对比谜题载体、叙事方式与玩家动机，提炼可迁移的设计原则。</p>
+        <div class="links">
+          <a href="游戏拆解/画中世界.html">点击阅读</a>
+        </div>
+      </div>
+    </article>
+      <article class="card">
+      <div class="card-body">
+        <h3>《笼中窥梦》视觉错位机制拆解</h3>
+        <p class="meta">关卡 / 系统方向 · 撰写中 · 预计 10 月中旬完成</p>
+        <p>立方体六个面的场景切换逻辑、引导方式、叙事与玩法的耦合。</p>
+        <div class="links">
+          <a href="游戏拆解/笼中窥梦.html">点击阅读</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-body">
         <h3>《锈湖：生日》解谜节奏与情绪曲线拆解</h3>
         <p class="meta">关卡 / 叙事方向 · 撰写中 · 预计 9 月底完成</p>
         <p>拆解重点：谜题密度如何匹配情绪起伏；环境叙事如何替代直接提示；结局反转的节奏铺垫。</p>
@@ -305,25 +323,9 @@
     </article>
     <article class="card">
       <div class="card-body">
-        <h3>锈湖 vs Gorogoa：两种解谜设计思路</h3>
-        <p class="meta">系统 / 关卡方向 · 撰写中 · 预计 10 月初完成</p>
-        <p>横向对比谜题载体、叙事方式与玩家动机，提炼可迁移的设计原则。</p>
-        <div class="links"><span class="link-pending">全文撰写中（预计在CSDN、知乎账号上发布）</span></div>
-      </div>
-    </article>
-    <article class="card">
-      <div class="card-body">
         <h3>《第五人格》角色技能与平衡性拆解</h3>
         <p class="meta">系统方向 · 撰写中 · 预计 10 月中旬完成</p>
         <p>从技能定位、信息差、地图机制到天赋系统，拆解非对称对抗的博弈设计。</p>
-        <div class="links"><span class="link-pending">全文撰写中（预计在CSDN、知乎账号上发布）</span></div>
-      </div>
-    </article>
-    <article class="card">
-      <div class="card-body">
-        <h3>《笼中窥梦》视觉错位机制拆解</h3>
-        <p class="meta">关卡 / 系统方向 · 撰写中 · 预计 10 月中旬完成</p>
-        <p>立方体六个面的场景切换逻辑、引导方式、叙事与玩法的耦合。</p>
         <div class="links"><span class="link-pending">全文撰写中（预计在CSDN、知乎账号上发布）</span></div>
       </div>
     </article>
@@ -351,7 +353,7 @@
         <h3>同人剪辑</h3>
         <p>节奏剪辑、情绪铺垫、音画配合。注明同人创作，非商用。</p>
         <div class="links">
-          <a href="https://www.bilibili.com/video/BV1PDQ9YFEPP/" target="_blank">观看</a>
+          <a href="https://www.bilibili.com/video/BV1PDQ9YFEPP/" target="_blank">b站观看</a>
         </div>
       </div>
     </article>
@@ -397,6 +399,12 @@
   <p style="margin-top:1rem; font-size:0.8rem;">© 2026 毛春雨 · 游戏策划作品集</p>
   <p style="margin-top:0.8rem; font-size:0.75rem; color:#999;">本作品集持续更新中 · 最后更新：2026.09.25</p>
 </footer>
+
+<!-- 回到顶部 -->
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">
+  <span class="back-to-top-arrow">↑</span>
+  <span class="back-to-top-label">TOP</span>
+</button>
 
 <!-- 图片灯箱 -->
 <div class="lightbox" id="lightbox" aria-hidden="true">

@@ -19,20 +19,13 @@ if (cells.length) {
       if (entry.isIntersecting) {
         const cell = entry.target;
         const index = Array.from(cells).indexOf(cell);
-        cell.style.opacity = '1';
-        cell.style.transform = 'translateY(0)';
-        cell.style.transition =
-          `opacity 0.8s ease ${index * 0.08}s, transform 0.8s ease ${index * 0.08}s, background 0.5s ease`;
+        setTimeout(() => cell.classList.add('entered'), index * 80);
         observer.unobserve(cell);
       }
     });
   }, { threshold: 0.1 });
 
-  cells.forEach(cell => {
-    cell.style.opacity = '0';
-    cell.style.transform = 'translateY(20px)';
-    observer.observe(cell);
-  });
+  cells.forEach(cell => observer.observe(cell));
 }
 
 // 鼠标移动时角落装饰轻微跟随
@@ -48,12 +41,13 @@ if (landing && corners.length) {
   });
 }
 
-// ============ 图片灯箱（支持同组切换） ============
+// ============ 图片灯箱（支持同组切换 + 返回键关闭 + 视频自动播放） ============
 (function initLightbox() {
   const lightbox = document.getElementById('lightbox');
   if (!lightbox) return;
 
   const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const lightboxVideo = lightbox.querySelector('.lightbox-video');
   const closeBtn = lightbox.querySelector('.lightbox-close');
   const prevBtn = lightbox.querySelector('.lightbox-prev');
   const nextBtn = lightbox.querySelector('.lightbox-next');
@@ -61,6 +55,7 @@ if (landing && corners.length) {
 
   let group = [];
   let index = 0;
+  let historyPushed = false;
 
   const render = () => {
     if (!group.length) return;
@@ -71,41 +66,93 @@ if (landing && corners.length) {
     lightbox.classList.toggle('has-multi', group.length > 1);
   };
 
-  const open = (img) => {
-    const gallery = img.closest('.intern-gallery');
-    if (gallery) {
-      group = Array.from(gallery.querySelectorAll('img'));
-    } else {
-      group = [img];
+  const findGroup = (img) => {
+    const dataGallery = img.closest('[data-gallery]');
+    if (dataGallery) {
+      return Array.from(dataGallery.querySelectorAll('img'));
     }
+    const internGallery = img.closest('.intern-gallery');
+    if (internGallery) {
+      return Array.from(internGallery.querySelectorAll('img'));
+    }
+    const courtyardGallery = img.closest('.courtyard-gallery');
+    if (courtyardGallery) {
+      return Array.from(courtyardGallery.querySelectorAll('img'));
+    }
+    return [img];
+  };
+
+  const pushHistory = () => {
+    history.pushState({ lightbox: true }, '');
+    historyPushed = true;
+  };
+
+  const open = (img) => {
+    lightbox.classList.remove('video-mode');
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+
+    group = findGroup(img);
     index = group.indexOf(img);
     if (index < 0) index = 0;
     render();
     lightbox.classList.add('active');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    pushHistory();
   };
 
-  const close = () => {
-    lightbox.classList.remove('active', 'has-multi');
+  const openVideo = (src) => {
+    lightbox.classList.remove('has-multi');
+    lightbox.classList.add('video-mode');
+    lightboxVideo.src = src;
+    lightboxVideo.currentTime = 0;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    pushHistory();
+
+    // 自动播放（muted 时浏览器允许自动播放）
+    const playPromise = lightboxVideo.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(() => {});
+    }
+  };
+
+  const close = (viaBack = false) => {
+    if (!lightbox.classList.contains('active')) return;
+    lightbox.classList.remove('active', 'has-multi', 'video-mode');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    setTimeout(() => { lightboxImg.src = ''; }, 260);
+    lightboxVideo.pause();
+    setTimeout(() => {
+      lightboxImg.src = '';
+      lightboxVideo.removeAttribute('src');
+    }, 260);
+
+    if (!viaBack && historyPushed) {
+      historyPushed = false;
+      history.back();
+    } else {
+      historyPushed = false;
+    }
   };
 
   const prev = () => {
+    if (lightbox.classList.contains('video-mode')) return;
     if (group.length < 2) return;
     index = (index - 1 + group.length) % group.length;
     render();
   };
 
   const next = () => {
+    if (lightbox.classList.contains('video-mode')) return;
     if (group.length < 2) return;
     index = (index + 1) % group.length;
     render();
   };
 
-  document.querySelectorAll('.card img, .project-visual img, .design-visual img, .intern-gallery img').forEach(img => {
+  document.querySelectorAll('.card img, .project-visual img, .design-visual img, .intern-gallery img, .courtyard-gallery img').forEach(img => {
     img.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -113,13 +160,19 @@ if (landing && corners.length) {
     });
   });
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      close();
-    }
+  document.querySelectorAll('.video-trigger').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openVideo(a.dataset.video);
+    });
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', () => close());
   if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
   if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
 
@@ -128,6 +181,12 @@ if (landing && corners.length) {
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
+  });
+
+  window.addEventListener('popstate', () => {
+    if (lightbox.classList.contains('active')) {
+      close(true);
+    }
   });
 })();
 
@@ -156,18 +215,15 @@ if (landing && corners.length) {
 (function initScrollRestore() {
   const KEY = 'portfolio-scroll-y';
 
-  // 离开页面前保存当前位置
   window.addEventListener('beforeunload', () => {
     sessionStorage.setItem(KEY, window.scrollY);
   });
 
-  // 返回页面时恢复
   window.addEventListener('load', () => {
     const saved = sessionStorage.getItem(KEY);
     if (saved !== null) {
       const y = parseInt(saved, 10);
       if (!isNaN(y) && y > 0) {
-        // 等页面渲染完成再滚
         requestAnimationFrame(() => {
           window.scrollTo(0, y);
         });

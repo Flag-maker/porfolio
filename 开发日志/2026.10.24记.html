@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026.9.26 建立好了三个主要场景，并做出了第一个核心循环白模</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f7f7f7;
+  --text: #111111;
+  --muted: #777777;
+  --border: #111111;
+  --border-soft: #e5e5e5;
+  --container: 1360px;
+  --gutter: 3rem;
+  --reading: 1080px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--text); }
+a:hover { opacity: 0.6; }
+
+/* 顶部栏 */
+.topbar {
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 0;
+}
+.topbar-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+}
+.topbar .back { color: var(--muted); border-bottom: none; }
+.topbar .back:hover { color: var(--text); opacity: 1; }
+.topbar .label { color: var(--muted); letter-spacing: 0.12em; font-size: 0.78rem; }
+
+/* 文章容器 */
+.article-wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 5rem var(--gutter) 6rem;
+}
+.article {
+  max-width: var(--reading);
+  margin: 0 auto;
+}
+.article .date {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+.article h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+.article p {
+  color: #333;
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+}
+.article h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2.8rem 0 1rem;
+}
+.article ul {
+  margin: 0 0 1.3rem 1.4rem;
+  color: #333;
+}
+.article li { margin-bottom: 0.5rem; font-size: 1rem; }
+.article code {
+  background: var(--bg-soft);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.92rem;
+}
+
+/* 标签行 */
+.tag-row {
+  margin-top: 3.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag-row span {
+  border: 1px solid var(--border-soft);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* 底部导航 */
+.nav-bottom {
+  margin-top: 3rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.nav-bottom a { color: var(--text); }
+
+/* 中屏 */
+@media (max-width: 1100px) {
+  :root { --gutter: 2rem; }
+  .article { max-width: 100%; }
+  .article h1 { font-size: 1.9rem; }
+  .article-wrap { padding: 4rem var(--gutter) 5rem; }
+}
+
+/* 移动端 */
+@media (max-width: 720px) {
+  :root { --gutter: 1.2rem; }
+  body { font-size: 15px; }
+  .topbar-inner { padding: 0 var(--gutter); }
+  .article-wrap { padding: 3rem var(--gutter) 4rem; }
+  .article h1 { font-size: 1.6rem; margin-bottom: 2rem; }
+  .article p { font-size: 0.95rem; }
+  .article h2 { font-size: 1.05rem; margin: 2rem 0 0.7rem; }
+  .article li { font-size: 0.95rem; }
+  .nav-bottom { flex-direction: column; gap: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="back" href="../index.html">← 返回作品集</a>
+    <span class="label">DEV LOG</span>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <article class="article">
+    <p class="date">2026.10.24</p>
+    <h1>新机制的思路</h1>
+    <p>自从游戏转型（从二维横版叙事转为点击类解密）后我一直有个心结，新的玩法是根据《画中世界》《纪念碑谷》这几款游戏想出来的，虽然截然不同，但总有种既视感。
+        而我更想让我的游戏更有属于我的独特风格，可是我也不知道从何下手。
+    </p>
+
+    <p>
+        今天在搭建游戏开场动画的白模时，实在没忍住，跟朋友讲了讲这个心结。讲完没什么头绪外心情还更糟糕了，我突然意识到了自己一直隐隐得意的核心玩法的一个致命缺陷——它太繁琐了。
+    </p>
+
+    <p>
+        原先我想好的核心玩法循环是<strong>三场景状态机的切换</strong>，开篇是“桌前”场景，该场景是个过渡场景，只有两个可交互点，分别是进入“书中”场景和进入“窗外”场景。玩家需要观察“窗外”场景的谜题，然后退回桌前场景、进入书中操作对应元素来破解谜题、退回桌前场景、进入窗外场景观察操作反馈。
+    </p>
+   
+    <p>
+        ——这么一描述毛病更清晰了，<strong>太繁琐了，玩家解谜的操作没有及时回馈，多次重复的点击完全是在浪费时间，消耗玩家的耐心。</strong>
+    </p>
+
+    <p>
+        猛然意识到这点后，我之前自以为天才的想法变得非常尴尬可笑，我大受打击，本来沮丧之下我打算先这样吧，本来也不可能第一部原创作品就一鸣惊人大受好评，总要先做完的。但是在双重打击下，我还是隐隐不甘心地想解决问题，结果真的让我想出来了！
+    </p>
+
+    <p>
+        所以现在，游戏迎来了<strong>第三次机制迭代</strong>，我想到了一种可以跟剧情结合起来的新机制，双屏同显的解谜，玩家在操控书中场景时，窗外场景的操作反馈会以女主埃拉拉口头描述的方式同时在屏幕里展现出来！
+    </p>
+
+    <p>
+        当然这个新思路可能也有些不足，但总归有了不错的进展，我也如愿让游戏玩法更有“我自己”的特色了。感觉隔一段时间跟身边好友叙述一下自己的创作思路还是很重要的，可以有效避免一些闭门造车导致自己没发现的隐藏问题。剩下的边开发边发现、解决吧。
+    </p>
+
+    <div class="tag-row">
+      <span>玩法迭代</span>
+      <span>核心玩法循环</span>
+      <span>测试</span>
+    </div>
+
+    <div class="nav-bottom">
+      <a href="开发日志/Day1.html">← 上一篇</a>
+      <a href="#">下一篇 →</a>
+    </div>
+  </article>
+</div>
+
+</body>
+</html>
